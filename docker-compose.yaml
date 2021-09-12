@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'address-book-app.jar'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8090:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/address_book
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+
+  db:
+    image: 'postgres:13.4-alpine'
+    container_name: db
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=address_book
