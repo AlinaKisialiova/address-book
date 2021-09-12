@@ -40,6 +40,7 @@ Uncomment these line in docker-compose file
 #    build:
 #      context: .
 ```
+Run
 ```
 docker-compose up
 ```
