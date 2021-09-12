@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: 'address-book-app:latest'
+    image: 'akisali/address-book:latest'
     build:
       context: .
     container_name: app
@@ -19,7 +19,7 @@ services:
     image: 'postgres:13.4-alpine'
     container_name: db
     ports:
-      - 5433:5432
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
