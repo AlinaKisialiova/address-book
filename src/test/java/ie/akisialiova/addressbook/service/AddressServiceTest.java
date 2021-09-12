@@ -59,25 +59,6 @@ public class AddressServiceTest {
         });
     }
 
-//    @Test
-//    public void whenUpdateValidAddress_thenUpdateOk() {
-//        ArgumentCaptor<Person> argument = ArgumentCaptor.forClass(Person.class);
-//        // given
-//        Address oldAddress = Address.builder().id(2L).postalCode("123").street("church street").build();
-//        Address newAddress = Address.builder().id(2L).postalCode("123").street("main church street").build();
-//        Person personWithOldAddress = new Person(1L, "Bill", "Gates", List.of(oldAddress));
-//        Person personWithNewAddress = new Person(1L, "Bill", "Gates", List.of(newAddress));
-//        given(personRepository.findById(1L)).willReturn(Optional.of(personWithOldAddress));
-//        when(personRepository.save(any(Person.class))).thenAnswer((Answer) invocation -> personRepository.save(argument.getValue()));
-//        // when
-//        addressService.update(1L, 2L, newAddress);
-//        // then
-////        verify(personRepository).save(argument.capture());
-//        assertEquals(newAddress, argument.getValue().getAddresses().get(0));
-//        then(personRepository).should().findById(1L);
-//        then(personRepository).should().save(personWithNewAddress);
-//    }
-
     @Test
     public void whenUpdateAddressForNotExistingPerson_thenException() {
         // given

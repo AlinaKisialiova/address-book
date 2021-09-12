@@ -15,17 +15,18 @@ The application provides functionality for operating with addresses for a person
 * Access to dockerHub to download the app docker image
 
 # API
-To see Open API (JSON schema) 
-
- `http:localhost:8090/api-docs`
-
-To see Swagger UI
-
-`http://localhost:8090/swagger-ui/index.html?configUrl=/api-docs/swagger-config`
 
 ![Alt text](./api.jpg/?raw=true "Address Book API")
 
 ![Alt text](./models.jpg/?raw=true "Address Book Models")
+
+To see Open API (JSON schema) 
+
+ `http:localhost:<your-port>/api-docs`
+
+To see Swagger UI
+
+`http://localhost:<your-port>/swagger-ui/index.html?configUrl=/api-docs/swagger-config`
 
 # Running
 ```
@@ -39,7 +40,6 @@ mvnw clean install
 
 # Implementation notes
 * DTO objects are not used because entities contain the same set fields on db, service and controller layer.
-* Service layer for `Person` model is not used because there is no service logic.
 * Code coverage 50%. Code coverage approach was to demonstrate ability to create different types of tests: unit (db, layer, controller), integration, and cover main cases.
 * No UI, because I am a backend developer
 

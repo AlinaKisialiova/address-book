@@ -1,9 +1,8 @@
 package ie.akisialiova.addressbook.controller;
 
 import ie.akisialiova.addressbook.model.Person;
-import ie.akisialiova.addressbook.repository.PersonRepository;
+import ie.akisialiova.addressbook.service.PersonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,35 +20,35 @@ public class PersonController {
 
     public static final String PERSONS_PATH = "/v1/persons";
 
-    private final PersonRepository repository;
+    private final PersonService service;
 
     @PostMapping
     public ResponseEntity<Long> addPerson(@Valid @RequestBody Person person) {
-        Long personId = repository.save(person).getId();
+        Long personId = service.save(person);
         return new ResponseEntity<>(personId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{personId}")
     public ResponseEntity<Void> editPerson(@PathVariable Long personId, @Valid @RequestBody Person person) {
-        repository.update(personId, person.getFirstName(), person.getLastName());
+        service.update(personId, person);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{personId}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long personId) {
-        repository.deleteById(personId);
+        service.delete(personId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
     public ResponseEntity<List<Person>> getListOfPersons(@RequestParam("page") int page, @RequestParam("size") int size, Pageable pageable) {
-        Page<Person> all = repository.findAll(pageable);
-        return ResponseEntity.ok(all.getContent());
+        List<Person> listOfPersons = service.getListOfPersons(pageable);
+        return ResponseEntity.ok(listOfPersons);
     }
 
     @GetMapping("/total")
     public ResponseEntity<Long> getTotalNumberOfPersons() {
-        Long totalNumber = repository.count();
+        Long totalNumber = service.getTotalNumber();
         return ResponseEntity.ok(totalNumber);
     }
 }

@@ -2,9 +2,8 @@ package ie.akisialiova.addressbook.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ie.akisialiova.addressbook.model.Person;
-import ie.akisialiova.addressbook.repository.PersonRepository;
+import ie.akisialiova.addressbook.service.PersonService;
 import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 import org.mockito.Answers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class PersonControllerTest {
     private ObjectMapper mapper;
 
     @MockBean(answer = Answers.RETURNS_MOCKS)
-    private PersonRepository repository;
+    private PersonService service;
 
     @Test
     public void whenPostRequestToPersonsAndValidPerson_thenCorrectResponse() throws Exception {
