@@ -22,14 +22,6 @@ The application provides functionality for operating with addresses for a person
 
 ![Alt text](./models.jpg/?raw=true "Address Book Models")
 
-To see Open API (JSON schema) 
-
- `http:localhost:<your-port>/api-docs`
-
-To see Swagger UI
-
-`http://localhost:<your-port>/swagger-ui/index.html?configUrl=/api-docs/swagger-config`
-
 # Running
 ```
 docker-compose up

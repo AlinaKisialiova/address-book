@@ -25,7 +25,7 @@ public class PersonRepositoryTest {
     private PersonRepository repository;
 
     @Test
-    public void whenAdd_thenCorrectResult() {
+    public void whenAddPerson_thenCorrectResult() {
         // given
         Person person = new Person("Joan", "Rolling");
         // when
@@ -38,7 +38,7 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    public void whenUpdate_thenCorrectResult() {
+    public void whenUpdatePerson_thenCorrectResult() {
         // given
         Person person = repository.findAll().get(0);
         String newFirstName = "Sara";
@@ -48,13 +48,10 @@ public class PersonRepositoryTest {
         // then
         Person updated = repository.findById(person.getId()).get();
         assertNotNull(updated);
-//        assertNotNull(updated.getId());
-//        assertEquals(newFirstName, updated.getFirstName());
-//        assertEquals(newSecondName, updated.getLastName());
     }
 
     @Test
-    public void whenUpdateNotExisting_thenCorrectResult() {
+    public void whenUpdateNotExistingPerson_thenCorrectResult() {
         // when
         repository.update(100L, "Sara", "Lunt");
         // then
@@ -63,7 +60,7 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    public void whenDelete_thenCorrectResult() {
+    public void whenDeletePerson_thenCorrectResult() {
         // given
         List<Person> allBefore = repository.findAll();
         // when
