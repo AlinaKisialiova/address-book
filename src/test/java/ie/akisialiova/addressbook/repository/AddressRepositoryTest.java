@@ -9,12 +9,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
 @DataJpaTest
-@Sql({"/db/populateDB.sql"})
+@Sql({"/populateDB.sql"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class AddressRepositoryTest {
 
@@ -24,7 +24,7 @@ public class AddressRepositoryTest {
     @Test
     public void whenAddAddress_thenCorrectResult() {
         // given
-        Person person = new Person(2L, "jan", "clod");
+        Person person = new Person(22L, "jan", "clod");
         Address address = Address.builder()
                 .street("irishtown street")
                 .city("Athlone")

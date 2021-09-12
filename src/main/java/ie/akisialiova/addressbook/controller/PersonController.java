@@ -14,21 +14,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = {PersonController.PERSONS_PATH},
-        consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = {PersonController.PERSONS_PATH})
 public class PersonController {
 
     public static final String PERSONS_PATH = "/v1/persons";
 
     private final PersonService service;
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Long> addPerson(@Valid @RequestBody Person person) {
         Long personId = service.save(person);
         return new ResponseEntity<>(personId, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{personId}")
+    @PutMapping(value = "/{personId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> editPerson(@PathVariable Long personId, @Valid @RequestBody Person person) {
         service.update(personId, person);
         return ResponseEntity.ok().build();

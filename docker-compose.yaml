@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: 'address-book-app.jar'
+    image: 'address-book-app:latest'
     build:
       context: .
     container_name: app

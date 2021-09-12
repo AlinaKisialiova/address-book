@@ -34,7 +34,7 @@ mvnw clean install
 
 # Implementation notes
 * DTO objects are not used because entities contain the same set fields on db, service and controller layer.
-* Code coverage 50%. Code coverage approach was to demonstrate ability to create different types of tests: unit (db, layer, controller), integration, and cover main cases.
+* Code coverage 60%. Code coverage approach was to demonstrate ability to create different types of tests: unit (db, layer, controller), integration, and cover main cases.
 * No UI, because I am a backend developer
 
 # Author

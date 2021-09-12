@@ -49,12 +49,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -64,6 +64,14 @@
     </dependencies>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resourses</directory>
+                <includes>
+                    <include>**/*.sql</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -99,14 +107,14 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.5</minimum>
+                                            <minimum>0.6</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
                             </rules>
                             <excludes>
                                 <exclude>**/*AddressBookApplication.class</exclude>
-                                <exclude>**/model/*.*</exclude>
+                                <exclude>**/model/*</exclude>
                             </excludes>
                         </configuration>
                     </execution>

@@ -36,7 +36,7 @@ public class AddressBookExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNotFoundExceptions(NoSuchElementException ex) {
-        return "There is no such entity in Address book. Details: " + ex.getCause().getMessage();
+        return "There is no such entity in Address book. Details: " + ex.getCause();
     }
 
     @ResponseStatus(HttpStatus.CONFLICT)

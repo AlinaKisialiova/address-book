@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
@@ -13,11 +13,11 @@ import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ActiveProfiles("test")
 @DataJpaTest
-@Sql({"/db/populateDB.sql"})
+@Sql({"/populateDB.sql"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class PersonRepositoryTest {
 
@@ -75,7 +75,7 @@ public class PersonRepositoryTest {
     @Test
     public void whenFindAll_thenCorrectResult() {
         // when
-        Page<Person> all = repository.findAll(Pageable.ofSize(10));
+        Page<Person> all = repository.findAll(PageRequest.of(0, 10));
         // then
         assertNotNull(all);
         assertEquals(5, all.getContent().size());
