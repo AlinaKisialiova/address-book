@@ -23,15 +23,26 @@ The application provides functionality for operating with addresses for a person
 ![Alt text](./models.jpg/?raw=true "Address Book Models")
 
 # Running
+#### Use the last version of image from dockerHub
+
 ```
 docker-compose up
 ```
 
-# Build locally
+#### Use locally built image
 ```
 mvnw clean install
 ```
 
+Uncomment these line in docker-compose file
+
+```
+#    build:
+#      context: .
+```
+```
+docker-compose up
+```
 # Implementation notes
 * DTO objects are not used because entities contain the same set fields on db, service and controller layer.
 * Code coverage 60%. Code coverage approach was to demonstrate ability to create different types of tests: unit (db, layer, controller), integration, and cover main cases.

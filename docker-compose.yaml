@@ -3,15 +3,16 @@ version: '2'
 services:
   app:
     image: 'akisali/address-book:latest'
-    build:
-      context: .
+# Uncomment to build local image
+#    build:
+#      context: .
     container_name: app
     ports:
       - "8090:8080"
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/address_book
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/address_book
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
 
