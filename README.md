@@ -18,6 +18,8 @@ The application provides functionality for operating with addresses for a person
 
 ![Alt text](./api.jpg/?raw=true "Address Book API")
 
+![Alt text](./response_codes.jpg/?raw=true "API Response Codes")
+
 ![Alt text](./models.jpg/?raw=true "Address Book Models")
 
 To see Open API (JSON schema) 
