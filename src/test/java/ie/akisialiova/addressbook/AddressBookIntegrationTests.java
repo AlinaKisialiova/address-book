@@ -5,6 +5,7 @@ import ie.akisialiova.addressbook.controller.PersonController;
 import ie.akisialiova.addressbook.model.Address;
 import ie.akisialiova.addressbook.model.Person;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -27,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
         @Sql(scripts = {"/populateDB.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
         @Sql(scripts = {"/cleanUpDb.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 })
+@AutoConfigureTestDatabase
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @ActiveProfiles("test")
 public class AddressBookIntegrationTests {
